@@ -1,8 +1,3 @@
-# ask the user for two numbers
-# ask the user for an operation to perform
-# perform the operation on the two numbers
-# output the result
-
 require 'yaml'
 MESSAGES = YAML.load_file('calculator_messages.yml')
 
@@ -26,7 +21,7 @@ def operator?(num)
 end
 
 def valid_number?(input_prompt, invalid_prompt, lang)
-input = ''
+  input = ''
   loop do
     prompt(message(input_prompt, lang))
     input = Kernel.gets.chomp
@@ -35,12 +30,12 @@ input = ''
   input
 end
 
-def valid_operator?(input_prompt, invalid_prompt, lang)
-input = ''
+def valid_operator?(input_prmpt, invalid_prmpt, lang)
+  input = ''
   loop do
-    prompt(message(input_prompt, lang))
+    prompt(message(input_prmpt, lang))
     input = Kernel.gets.chomp
-    if operator?(input) then break else prompt(message(invalid_prompt, lang)) end
+    if operator?(input) then break else prompt(message(invalid_prmpt, lang)) end
   end
   input
 end
@@ -73,10 +68,9 @@ loop do
   end
 end
 
-prompt("#{message('greeting', lang)}")
+prompt(message('greeting', lang))
 
 loop do # main loop
-  tmp_num = ''
   number1 = valid_number?('number1_prompt', 'invalid_number', lang)
   number2 = valid_number?('number2_prompt', 'invalid_number', lang)
   operator = valid_operator?("operator_prompt", "invalid_operator", lang)
