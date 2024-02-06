@@ -1,0 +1,40 @@
+
+
+en:
+  welcome: "Welcome to Calculator! What language do you speak? (en/fr)"
+  greeting: "Hi, you can add, subtract, multiply, or divide 2 numbers"
+  valid_name: "Make sure to enter a valid name."
+  number1_prompt: "What's the first number?"
+  invalid_number: "Hmm.. that doesn't look like a valid number"
+  number2_prompt: "What's the second number?"
+  invalid_language: "Not a valid language"
+  operator_prompt: | 
+    What operation would you like to perform?
+      1) add
+      2) subtract
+      3) multiply
+      4) divide 
+  invalid_operator: "Must choose 1, 2, 3, or 4" 
+  two_numbers: "the two numbers..."
+  result_prompt: "The result is"
+  another_calculation?: "Do you want to perform another calculation? (Y to calculate again)"
+  goodbye_prompt: "Thank you for using the calculator. Good bye!"
+fr:
+  welcome: "Bienvenue sur Calculatrice! Entrez votre nom:"
+  greeting: "Bonjour, vous pouvez ajouter, soustraire, multiplier ou diviser 2 nombres"
+  valid_name: "Assurez-vous de saisir un nom valide."
+  number1_prompt: "Quel est le premier numéro?"
+  invalid_number: "Hmm... ça ne ressemble pas à un numéro valide"
+  number2_prompt: "Quel est le deuxième numéro?"
+  invalid_language: "Ce n'est pas une langue valide"
+  operator_prompt: | 
+    Quelle opération souhaiteriez-vous réaliser?
+      1) rajouter
+      2) soustraire
+      3) multiplier
+      4) diviser 
+  invalid_operator: "Doit choisir 1, 2, 3 ou 4"
+  two_numbers: "les deux chiffres...."
+  result_prompt: "Le résultat est"
+  another_calculation?: "Voulez-vous effectuer un autre calcul ? (Y pour calculer à nouveau)"
+  goodbye_prompt: "Merci d'utiliser la calculatrice. Au revoir!"
