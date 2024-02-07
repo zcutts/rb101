@@ -5,13 +5,6 @@ def prompt(message)
   Kernel.puts("=> #{message}")
 end
 
-operation_to_message = {
-  '1' => 'Adding',
-  '2' => 'Subtracting',
-  '3' => 'Multiplying',
-  '4' => 'Dividing'
-}
-
 def number?(num)
   num.to_i.to_s == num || num.to_f.to_s == num
 end
@@ -57,6 +50,13 @@ def perform_operation(operator, num1, num2)
   end
 end
 
+operation_to_message = {
+  '1' => 'Adding',
+  '2' => 'Subtracting',
+  '3' => 'Multiplying',
+  '4' => 'Dividing'
+}
+
 prompt(message('welcome'))
 lang = 'en'
 loop do
@@ -71,9 +71,16 @@ end
 prompt(message('greeting', lang))
 
 loop do # main loop
+  Kernel.system("clear")
   number1 = valid_number?('number1_prompt', 'invalid_number', lang)
   number2 = valid_number?('number2_prompt', 'invalid_number', lang)
   operator = valid_operator?("operator_prompt", "invalid_operator", lang)
+
+  if number2 == '0' && operator == '4'
+    prompt(message("division_by_0", lang))
+    sleep() until Kernel.gets.chomp
+    next
+  end
 
   prompt("#{operation_to_message[operator]} #{message('two_numbers', lang)}")
 
@@ -84,7 +91,6 @@ loop do # main loop
   prompt(message("another_calculation?", lang))
   continue = Kernel.gets().chomp()
   break unless %[y].include?(continue.downcase)
-  Kernel.system("clear")
 end
 
 prompt(message("goodbye_prompt", lang))
