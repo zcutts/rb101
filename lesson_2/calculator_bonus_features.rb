@@ -9,6 +9,13 @@ def number?(num)
   num.to_i.to_s == num || num.to_f.to_s == num
 end
 
+operation_to_message = {
+  '1' => 'Adding',
+  '2' => 'Subtracting',
+  '3' => 'Multiplying',
+  '4' => 'Dividing'
+}
+
 def operator?(num)
   %[1 2 3 4].include?(num)
 end
@@ -50,12 +57,24 @@ def perform_operation(operator, num1, num2)
   end
 end
 
-operation_to_message = {
-  '1' => 'Adding',
-  '2' => 'Subtracting',
-  '3' => 'Multiplying',
-  '4' => 'Dividing'
-}
+def continue?(lang)
+  to_break = ''
+  loop do
+    prompt(message("another_calculation?", lang))
+    continue = Kernel.gets().chomp()
+
+    if continue.downcase == 'y' || continue.downcase == 'yes'
+      to_break = nil
+      break
+    elsif continue.downcase == 'n' || continue.downcase == 'no'
+      to_break = 'break'
+      break
+    else
+      prompt(message("invalid_continue", lang))
+    end
+  end
+  to_break
+end
 
 prompt(message('welcome'))
 lang = 'en'
@@ -68,7 +87,20 @@ loop do
   end
 end
 
-prompt(message('greeting', lang))
+name = ''
+loop do
+  prompt(message('enter_name', lang))
+  name = Kernel.gets().chomp().strip.capitalize
+  if name.empty?
+    prompt(message("invalid_name", lang))
+  else
+    break
+  end
+end
+
+prompt("#{message('greeting', lang)} #{name}!")
+prompt(message('describe_calculator', lang))
+sleep(3)
 
 loop do # main loop
   Kernel.system("clear")
@@ -88,9 +120,8 @@ loop do # main loop
 
   prompt("#{message('result_prompt', lang)} #{result}")
 
-  prompt(message("another_calculation?", lang))
-  continue = Kernel.gets().chomp()
-  break unless %[y].include?(continue.downcase)
+  to_break = continue?(lang)
+  break if to_break
 end
 
 prompt(message("goodbye_prompt", lang))
